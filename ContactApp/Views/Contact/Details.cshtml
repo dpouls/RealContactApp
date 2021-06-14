@@ -1,0 +1,33 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Details";
+
+}
+
+<h1>Contact Details</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <td>Name:</td>
+        <td>@Model.FirstName @Model.LastName</td>
+    </tr>
+    <tr>
+        <td>Phone:</td>
+        <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <td>Category:</td>
+        <td>@Model.Category.Name</td>
+    </tr>
+    <tr>
+        <td>Date Added:</td>
+        <td>@Model.DateCreated.ToString("MM/dd/yyyy") at @Model.DateCreated.ToString("h:mm tt")</td>
+    </tr>
+</table>
+<a class="btn btn-dark"asp-controller="Contact" asp-action="Edit" asp-route-id="@Model.ContactId" asp-route-slug="@Model.Slug">Edit</a>
+<a class="btn btn-dark" asp-controller="Contact" asp-action="Delete" asp-route-id="@Model.ContactId" asp-route-slug="@Model.Slug">Delete</a>
+<a  class="btn btn-dark" asp-controller="Home" asp-action="Index">Home</a>
