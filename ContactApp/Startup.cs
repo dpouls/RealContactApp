@@ -33,6 +33,7 @@ namespace ContactApp
                 options.AppendTrailingSlash = true;
             });
             services.AddControllersWithViews();
+            //allows us to use sql server and connect with our connection string in the appsettings.json file.
             services.AddDbContext<ContactContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ContactContext")));
         }
 
@@ -54,10 +55,9 @@ namespace ContactApp
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
+                //added an optional slug to the end of the default route.
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
